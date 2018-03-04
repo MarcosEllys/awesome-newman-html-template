@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Postman - Reports</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <style type="text/css">
+      body{background:#fafafa}.tego-bg-red .panel-title,.tego-bg-green .panel-title{color:#fff}.tego-bg-red{background-color:#d9534f!important}.tego-bg-green{background-color:#5cb85c!important}.tego-color-red{color:#c0392b;font-weight:700}.tego-color-green{color:#27ae60;font-weight:700}.panel-group-header{border-bottom:2px solid darkgrey;margin-bottom:10px}.type-get{font-size:16px;font-weight:600;margin-right:5px;text-transform:uppercase;color:#3eb63e}.type-put{font-size:16px;font-weight:600;margin-right:5px;text-transform:uppercase;color:#4a90e2}.type-post{font-size:16px;font-weight:600;margin-right:5px;text-transform:uppercase;color:#f5a623}.type-delete{font-size:16px;font-weight:600;margin-right:5px;text-transform:uppercase;color:#ed4b48}.widget{color:#fff;margin:0 0 25px;display:block;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px}.widget .widget-heading{padding:7px 15px;-webkit-border-radius:2px 2px 0 0;-moz-border-radius:2px 2px 0 0;border-radius:2px 2px 0 0;text-align:center;color:#fff}.widget .widget-body{padding:10px 15px;font-size:36px;font-weight:300}.widget .widget-heading-red{background-color:#bd2d2a}.widget .widget-heading-gray{background-color:#2e3f44}.widget .widget-body-gray{background-color:#33464d}.widget .widget-heading-orange{background-color:#e08900}.widget .widget-body-orange{background-color:#f89800}.widget .widget-heading-lemon{background-color:#bdcc35}.widget .widget-body-lemon{background-color:#cddc39}.widget .widget-heading-blue{background-color:#35a9bf}.widget .widget-body-blue{background-color:#3cbcd5}.widget .widget-heading-green{background-color:#7daf42}.widget .widget-body-green{background-color:#8bc34a}.widget .widget-heading-pink{background-color:#ae1247}.widget .widget-body-pink{background-color:#e91e63}.widget .widget-heading-dark-blue{background-color:#226fb6}.widget .widget-body-dark-blue{background-color:#3096f3}.widget .widget-heading-yellow{background-color:#b5a520}.widget .widget-body-yellow{background-color:#f1dd2f}.card{background:#fff;border-radius:2px;display:inline-block;height:100%;margin:1rem;position:relative;width:100%;box-shadow:0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12)}
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="card">
+        <div class="col-md-6 pull-left">
+          {{#with summary}}
+            <div><h3>Collection {{collection.name}}</h3></div>
+            {{#if collection.description}}<div>{{collection.description}}&nbsp;</div>{{/if}}
+          {{/with}}
+        </div>
+        <div class="col-md-6 pull-right">
+          <div><h5>Time: {{timestamp}}</h5></div>
+          <div><h5>Exported with Newman v{{version}}</h5></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      {{#with summary}}
+        {{#with stats}}
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <div class="widget">
+              {{#if iterations.failed}}
+                <div class="widget-heading widget-heading-red clearfix"> {{else}}
+                <div class="widget-heading widget-heading-dark-blue clearfix">
+              {{/if}}
+                <div class="pull-left">Interations</div>
+                <div class="pull-right" title="Interations Failed"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{iterations.failed}}</div>
+              </div>
+              <div class="widget-body widget-body-dark-blue clearfix">
+                <div class="pull-left">
+                  <i class="fa fa-repeat"></i>
+                </div>
+                <div class="pull-right number">{{iterations.total}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <div class="widget">
+              {{#if requests.failed}}
+                <div class="widget-heading widget-heading-red clearfix"> {{else}}
+                <div class="widget-heading widget-heading-yellow clearfix">
+              {{/if}}
+                <div class="pull-left">Requests</div>
+                <div class="pull-right" title="Requests Failed"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{requests.failed}}</div>
+              </div>
+              <div class="widget-body widget-body-yellow clearfix">
+                <div class="pull-left">
+                  <i class="fa fa-repeat"></i>
+                </div>
+                <div class="pull-right number">{{requests.total}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <div class="widget">
+              {{#if prerequestScripts.failed}}
+                <div class="widget-heading widget-heading-red clearfix"> {{else}}
+                <div class="widget-heading widget-heading-gray clearfix">
+              {{/if}}
+                <div class="pull-left">Prerequest Scripts</div>
+                <div class="pull-right" title="Prerequest Failed"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{prerequestScripts.failed}}</div>
+              </div>
+              <div class="widget-body widget-body-gray clearfix">
+                <div class="pull-left">
+                  <i class="fa fa-undo"></i>
+                </div>
+                <div class="pull-right number">{{prerequestScripts.total}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <div class="widget">
+              {{#if testScripts.failed}}
+                <div class="widget-heading widget-heading-red clearfix"> {{else}}
+                <div class="widget-heading widget-heading-pink clearfix">
+              {{/if}}
+                <div class="pull-left">Test Scripts</div>
+                <div class="pull-right" title="Test Scripts Failed"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{testScripts.failed}}</div>
+              </div>
+              <div class="widget-body widget-body-pink clearfix">
+                <div class="pull-left">
+                  <i class="fa fa-list"></i>
+                </div>
+                <div class="pull-right number">{{testScripts.total}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-3">
+            <div class="widget">
+              {{#if assertions.failed}}
+                <div class="widget-heading widget-heading-red clearfix"> {{else}}
+                <div class="widget-heading widget-heading-green clearfix">
+              {{/if}}
+                <div class="pull-left">Assertions</div>
+                <div class="pull-right" title="Assertions Failed"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{assertions.failed}}</div>
+              </div>
+              <div class="widget-body widget-body-green clearfix">
+                <div class="pull-left">
+                  <i class="fa fa-check"></i>
+                </div>
+                <div class="pull-right number">{{assertions.total}}</div>
+              </div>
+            </div>
+          </div>
+        {{/with}}
+
+        <div class="col-lg-3 col-md-3 col-sm-3">
+          <div class="widget">
+            <div class="widget-heading widget-heading-orange clearfix">
+              <div class="pull-left">Total run duration</div>
+            </div>
+            <div class="widget-body widget-body-orange clearfix">
+              <div class="pull-left">
+                <i class="fa fa-clock-o"></i>
+              </div>
+              <div class="pull-right number">{{duration}}</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-3">
+          <div class="widget">
+            <div class="widget-heading widget-heading-blue clearfix">
+              <div class="pull-left">Total data received</div>
+            </div>
+            <div class="widget-body widget-body-blue clearfix">
+              <div class="pull-left">
+                <i class="fa fa-download"></i>
+              </div>
+              <div class="pull-right number">{{responseTotal}} (approx)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-3">
+          <div class="widget">
+            <div class="widget-heading widget-heading-lemon clearfix">
+              <div class="pull-left">Average response time</div>
+            </div>
+            <div class="widget-body widget-body-lemon clearfix">
+              <div class="pull-left">
+                <i class="fa fa-balance-scale"></i>
+              </div>
+              <div class="pull-right number">{{responseAverage}}</div>
+            </div>
+          </div>
+        </div>
+      {{/with}}
+    </div>
+
+    <br/>
+    <h1 class="bd-title" id="content">Requests</h1>
+
+    {{#each aggregations}}
+      {{#if parent.name}}
+      <div class="panel-group" id="collapse-folder-{{parent.id}}" role="tablist" aria-multiselectable="true">
+          <div role="tab" id="folderHead-{{parent.id}}">
+            <a data-toggle="collapse" data-parent="#accordion" href="#folderData-{{parent.id}}" aria-controls="collapseOne"><strong>{{parent.name}}</strong></a>
+          </div>
+          <br/>
+          <div id="folderData-{{parent.id}}" class="panel-collapse collapsed" role="tabpanel" aria-labelledby="folderHead-{{parent.id}}">
+          {{> aggregations}}
+          </div>
+      </div>
+      {{else}}
+      {{> aggregations}}
+      {{/if}}
+    {{/each}}
+  </div>
+
+  {{#*inline "aggregations"}}
+      {{#each executions}}
+        <div class="panel-group panel-group-header" id="collapse-request-{{item.id}}" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading card" role="tab" id="requestHead-{{item.id}}" style="margin: 0; padding: 10px;">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" data-parent="#accordion" href="#requestData-{{item.id}}" aria-controls="collapseOne">
+                        {{#if cumulativeTests.failed}} <div style="width: 25px; height: 25px; background-color: #dc3545; float: left; margin: 0 5px;"></div>{{else}}
+                        <div style="width: 25px; height: 25px; background-color: #28a745; float: left; margin: 0 5px;"></div>{{/if}}
+                        {{#with request}} <span class="method">{{method}}</span> {{/with}} - {{item.name}}
+
+                        <div class="pull-right">
+                          <span title="Status Code" class="badge badge-warning">{{response.code}}</span> -
+                          <span class="badge badge-primary">{{mean.time}}</span> -
+                          <span class="badge badge-success">{{mean.size}}</span>
+                        </div>
+                      </a>
+                    </h4>
+                </div>
+
+                <div id="requestData-{{item.id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="requestHead-{{item.id}}">
+                    <div class="panel-body">
+                      {{#with request}}
+                          {{#if description.content}}
+                            <div class="col-md-4">Description</div><div class="col-md-8" style="white-space: pre-wrap;">{{description.content}}</div>
+                          {{/if}}
+                        <div class="col-md-12 text-center" style="margin-top: 15px;"><h5>URL: <a href="{{url}}" target="_blank">{{url}}</a></h5></div>
+                      {{/with}}
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          {{#with request}}
+                            {{#if body.raw}}
+                              <div class="card" style="margin: 0">
+                                <div class="card-header"><h5>Body Request</h5></div>
+                                <div class="card-body"> <pre>{{body.raw}}</pre> </div>
+                              </div>
+                            {{/if}}
+                          {{/with}}
+                        </div>
+                        <div class="col-md-6">
+                          {{#if response.body}}
+                            <div class="card" style="margin: 0">
+                              <div class="card-header"><h5>Body Response</h5></div>
+                              <div class="card-body"> <pre>{{response.body}}</pre> </div>
+                            </div>
+                          {{/if}}
+                        </div>
+                      </div>
+
+                      {{#if assertions.length}}
+                        <div class="row">
+                          <div class="card">
+                            <table class="table table-condensed table-hover">
+                              <thead class="text-center" style="background-color: #36a9f5; color: #ffffff">
+                                <tr>
+                                  <th style="border-left: 10px solid #36a9f5;"><h4>Tests</h4></th>
+                                </tr></thead>
+                                <tbody>
+                                {{#each assertions}}
+                                <tr>
+                                  {{#if this.passed}}<td style="border-left: 10px solid #28a745;">{{this.name}}</td>{{/if}}
+                                  {{#if this.failed}}<td style="border-left: 10px solid #dc3545;">{{this.name}}</td>{{/if}}
+                                </tr>
+                                {{/each}}
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+      {{/each}}
+  {{/inline}}
+  <script type="text/javascript">
+    Array.from(document.getElementsByClassName("method")).forEach(
+      function(element, index, array) {
+        if (element.textContent === 'GET') {
+         element.classList.add("type-get");
+        }
+        if (element.textContent === 'PUT') {
+         element.classList.add("type-put");
+        }
+        if (element.textContent === 'POST') {
+         element.classList.add("type-post");
+        }
+        if (element.textContent === 'DELETE') {
+         element.classList.add("type-delete");
+        }
+      }
+    );
+  </script>
+</body>
+</html>
