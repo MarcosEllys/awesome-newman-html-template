@@ -40,7 +40,7 @@
 <body>
   <div class="container-fluid">
     <div class="row">
-      <div class="card">
+      <div class="card" style="padding: 0.5em;">
         <div class="col-md-6 pull-left">
           {{#with summary}}
             <div><h3>Collection {{collection.name}}</h3></div>
@@ -256,9 +256,19 @@
 
                 <div id="requestData-{{item.id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="requestHead-{{item.id}}">
                     <div class="panel-body">
+                    	<br>
                       {{#with request}}
                           {{#if description.content}}
-                            <div class="col-md-4">Description</div><div class="col-md-8" style="white-space: pre-wrap;">{{description.content}}</div>
+                          	<div class="row">
+                          		<div class="col-md-12">
+                          			<div class="card" style="margin:0">
+                          			  <div class="card-header"><h5>Description</h5></div>
+                          			  <div class="card-body">
+                          			  	{{description.content}}
+                          			  </div>
+                          			</div>
+                          		</div>
+                          	</div>
                           {{/if}}
                         <div class="col-md-12 text-center" style="margin-top: 15px;"><h5>URL: <a href="{{url}}" target="_blank">{{url}}</a></h5></div>
                       {{/with}}
