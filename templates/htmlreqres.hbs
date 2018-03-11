@@ -34,7 +34,8 @@
   </script>
 
   <style type="text/css">
-      .type-delete,.type-get,.type-post,.type-put{font-size:16px;font-weight:600;margin-right:5px;text-transform:uppercase}.icon-card,.mini-icon-card{vertical-align:baseline;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0,0)}body{background:#fafafa}a{word-wrap:break-word}.pull-left{float:left}.pull-right{float:right}.panel-group-header{border-bottom:2px solid #a9a9a9;margin-bottom:10px}.type-get{color:#3eb63e}.type-put{color:#4a90e2}.type-post{color:#f5a623}.type-delete{color:#ed4b48}.widget{color:#fff;margin:0 0 25px;display:block;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px}.card,.icon-card,.mini-icon-card{display:inline-block}.widget .widget-heading{padding:7px 15px;-webkit-border-radius:2px 2px 0 0;-moz-border-radius:2px 2px 0 0;border-radius:2px 2px 0 0;text-align:center;color:#fff}.widget .widget-body{padding:10px 15px;font-size:36px;font-weight:300}.widget .widget-heading-red{background-color:#bd2d2a}.widget .widget-heading-gray{background-color:#2e3f44}.widget .widget-body-gray{background-color:#33464d}.widget .widget-heading-orange{background-color:#e08900}.widget .widget-body-orange{background-color:#f89800}.widget .widget-heading-lemon{background-color:#bdcc35}.widget .widget-body-lemon{background-color:#cddc39}.widget .widget-heading-blue{background-color:#35a9bf}.widget .widget-body-blue{background-color:#3cbcd5}.widget .widget-heading-green{background-color:#7daf42}.widget .widget-body-green{background-color:#8bc34a}.widget .widget-heading-pink{background-color:#ae1247}.widget .widget-body-pink{background-color:#e91e63}.widget .widget-heading-dark-blue{background-color:#226fb6}.widget .widget-body-dark-blue{background-color:#3096f3}.widget .widget-heading-yellow{background-color:#b5a520}.widget .widget-body-yellow{background-color:#f1dd2f}.card{background:#fff;border-radius:2px;height:100%;margin:1rem;position:relative;width:100%;box-shadow:0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12)}.icon-card{width:36px}.mini-icon-card{width:16px}
+     .icon-card,.mini-icon-card{vertical-align:baseline;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;transform:translate(0,0)}body{background:#fafafa}a{word-wrap:break-word}.pull-left{float:left}.pull-right{float:right}.panel-group-header{border-bottom:2px solid #a9a9a9;margin-bottom:10px}.status-error,.status-success{width:25px;height:25px;float:left;margin:0 5px}.status-error{background-color:#dc3545}.status-success{background-color:#28a745}.type-delete,.type-get,.type-post,.type-put{font-size:16px;font-weight:600;margin-right:5px;text-transform:uppercase}.type-get{color:#3eb63e}.type-put{color:#4a90e2}.type-post{color:#f5a623}.type-delete{2
+          color:#ed4b48}.widget{color:#fff;margin:0 0 25px;display:block;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px}.card,.icon-card,.mini-icon-card{display:inline-block}.widget .widget-heading{padding:7px 15px;-webkit-border-radius:2px 2px 0 0;-moz-border-radius:2px 2px 0 0;border-radius:2px 2px 0 0;text-align:center;color:#fff}.widget .widget-body{padding:10px 15px;font-size:36px;font-weight:300}.widget .widget-heading-red{background-color:#bd2d2a}.widget .widget-heading-gray{background-color:#2e3f44}.widget .widget-body-gray{background-color:#33464d}.widget .widget-heading-orange{background-color:#e08900}.widget .widget-body-orange{background-color:#f89800}.widget .widget-heading-lemon{background-color:#bdcc35}.widget .widget-body-lemon{background-color:#cddc39}.widget .widget-heading-blue{background-color:#35a9bf}.widget .widget-body-blue{background-color:#3cbcd5}.widget .widget-heading-green{background-color:#7daf42}.widget .widget-body-green{background-color:#8bc34a}.widget .widget-heading-pink{background-color:#ae1247}.widget .widget-body-pink{background-color:#e91e63}.widget .widget-heading-dark-blue{background-color:#226fb6}.widget .widget-body-dark-blue{background-color:#3096f3}.widget .widget-heading-yellow{background-color:#b5a520}.widget .widget-body-yellow{background-color:#f1dd2f}.card{background:#fff;border-radius:2px;height:100%;margin:1rem;position:relative;width:100%;box-shadow:0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12)}.icon-card{width:36px}.mini-icon-card{width:16px}
   </style>
 </head>
 <body>
@@ -214,8 +215,26 @@
       {{/with}}
     </div>
 
-    <br/>
-    <h1 class="bd-title" id="content">Requests</h1>
+    <div class="row">
+      <div class="col-md-3">
+        <h1 class="bd-title" id="content">Requests</h1>
+      </div>
+      <div class="col-md-3">
+        <button type="button" class="btn btn-block btn-lg btn-primary" id="show-all">
+          Show all
+        </button>
+      </div>
+      <div class="col-md-3">
+        <button type="button" class="btn btn-block btn-lg btn-success" id="show-success">
+          Show success
+        </button>
+      </div>
+      <div class="col-md-3">
+        <button type="button" class="btn btn-block btn-lg btn-danger" id="show-error">
+          Show errors
+        </button>
+      </div>
+    </div>
 
     {{#each aggregations}}
       {{#if parent.name}}
@@ -236,13 +255,18 @@
 
   {{#*inline "aggregations"}}
       {{#each executions}}
-        <div class="panel-group panel-group-header" id="collapse-request-{{item.id}}" role="tablist" aria-multiselectable="true">
+
+      {{#if cumulativeTests.failed}}
+        <div class="panel-group panel-group-header panel-group-header-error" id="collapse-request-{{item.id}}" role="tablist" aria-multiselectable="true">
+      {{else}}
+        <div class="panel-group panel-group-header panel-group-header-success" id="collapse-request-{{item.id}}" role="tablist" aria-multiselectable="true">
+      {{/if}}
             <div class="panel panel-default">
                 <div class="panel-heading card" role="tab" id="requestHead-{{item.id}}" style="margin: 0; padding: 10px;">
                     <h4 class="panel-title">
                       <a data-toggle="collapse" data-parent="#accordion" href="#requestData-{{item.id}}" aria-controls="collapseOne">
-                        {{#if cumulativeTests.failed}} <div style="width: 25px; height: 25px; background-color: #dc3545; float: left; margin: 0 5px;"></div>{{else}}
-                        <div style="width: 25px; height: 25px; background-color: #28a745; float: left; margin: 0 5px;"></div>{{/if}}
+                        {{#if cumulativeTests.failed}} <div class="status-error"></div>{{else}}
+                        <div class="status-success"></div>{{/if}}
                         {{#with request}} <span class="method">{{method}}</span> {{/with}} - {{item.name}}
 
                         <div class="pull-right">
@@ -256,19 +280,19 @@
 
                 <div id="requestData-{{item.id}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="requestHead-{{item.id}}">
                     <div class="panel-body">
-                    	<br>
+                      <br>
                       {{#with request}}
                           {{#if description.content}}
-                          	<div class="row">
-                          		<div class="col-md-12">
-                          			<div class="card" style="margin:0">
-                          			  <div class="card-header"><h5>Description</h5></div>
-                          			  <div class="card-body">
-                          			  	{{description.content}}
-                          			  </div>
-                          			</div>
-                          		</div>
-                          	</div>
+                            <div class="row">
+                              <div class="col-md-12">
+                                <div class="card" style="margin:0">
+                                  <div class="card-header"><h5>Description</h5></div>
+                                  <div class="card-body">
+                                    {{description.content}}
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           {{/if}}
                         <div class="col-md-12 text-center" style="margin-top: 15px;"><h5>URL: <a href="{{url}}" target="_blank">{{url}}</a></h5></div>
                       {{/with}}
@@ -339,27 +363,40 @@
       {{/each}}
   {{/inline}}
   <script type="text/javascript">
-    Array.from(document.getElementsByClassName("method")).forEach( function(element, index, array) {
-      if (element.textContent === 'GET') {
-       element.classList.add("type-get");
-      }
-      if (element.textContent === 'PUT') {
-       element.classList.add("type-put");
-      }
-      if (element.textContent === 'POST') {
-       element.classList.add("type-post");
-      }
-      if (element.textContent === 'DELETE') {
-       element.classList.add("type-delete");
-      }
+    $.each($('.method'), function() {
+      $(this).addClass('type-'+$(this).text().toLowerCase());
     });
 
-    Array.from(document.getElementsByClassName("params")).forEach(function(element, index, array) {
+    $.each($('.params'), function() {
       var vars = {};
-      var parts = decodeURIComponent(element.textContent).replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+      decodeURIComponent($(this).text()).replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
         vars[key] = value;
       });
-      element.innerText=  JSON.stringify(vars, undefined, 2);
+      $(this).text(JSON.stringify(vars, undefined, 2));
+    });
+
+    $("#show-all").click(function() {
+      $.each($('.panel-group-header'), function() {
+        $(this).show();
+      });
+    });
+
+    $("#show-success").click(function() {
+      $.each($('.panel-group-header-success'), function() {
+        $(this).show();
+      });
+      $.each($('.panel-group-header-error'), function() {
+        $(this).hide();
+      });
+    });
+
+    $("#show-error").click(function() {
+      $.each($('.panel-group-header-error'), function() {
+        $(this).show();
+      });
+      $.each($('.panel-group-header-success'), function() {
+        $(this).hide();
+      });
     });
   </script>
 </body>
