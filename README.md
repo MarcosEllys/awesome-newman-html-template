@@ -4,6 +4,10 @@ a newman html report template which contains request and response details (body 
 
 The template is a modification from the original reporter file from https://github.com/postmanlabs/newman/blob/develop/lib/reporters/html/template-default.hbs
 
+## Libraries present
+- [Bootstrap](http://getbootstrap.com/)
+- [Clipboard JS](https://clipboardjs.com/)
+
 ## Prints
 * Initial Screen
 <p align="center">
