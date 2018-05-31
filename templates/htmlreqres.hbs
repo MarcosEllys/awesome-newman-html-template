@@ -228,18 +228,26 @@
           Show success
         </button>
       </div>
-      <div class="col-md-3">
-        <button type="button" class="btn btn-block btn-lg btn-danger" id="show-error">
-          Show errors
-        </button>
-      </div>
+      {{#with summary}}
+        {{#with stats}}
+          {{#if assertions.failed}}
+            <div class="col-md-3">
+              <button type="button" class="btn btn-block btn-lg btn-danger" id="show-error">
+                Show errors
+              </button>
+            </div>
+          {{/if}}
+        {{/with}}
+      {{/with}}
     </div>
 
     {{#each aggregations}}
       {{#if parent.name}}
       <div class="panel-group" id="collapse-folder-{{parent.id}}" role="tablist" aria-multiselectable="true">
           <div role="tab" id="folderHead-{{parent.id}}">
-            <a data-toggle="collapse" role="button" data-parent="#accordion" href="#folderData-{{parent.id}}" aria-controls="collapseOne"><strong>{{parent.name}}</strong></a>
+            <button class="btn btn-link" type="button" data-toggle="collapse" role="button" data-parent="#accordion" data-target="#folderData-{{parent.id}}" aria-controls="collapseOne" aria-expanded="false">
+              <strong>{{parent.name}}</strong>
+            </button>
           </div>
           <br/>
           <div id="folderData-{{parent.id}}" class="panel-collapse collapsed" role="tabpanel" aria-labelledby="folderHead-{{parent.id}}">
@@ -263,7 +271,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading card" role="tab" id="requestHead-{{item.id}}" style="margin: 0; padding: 10px;">
                     <h4 class="panel-title">
-                      <button class="btn btn-link" type="button" data-toggle="collapse" data-parent="#accordion" data-target="#requestData-{{item.id}}" aria-controls="collapseOne">
+                      <button class="btn btn-link" type="button" data-toggle="collapse" data-parent="#accordion" data-target="#requestData-{{item.id}}" aria-controls="requestData-{{item.id}}" aria-expanded="false">
                         {{#if cumulativeTests.failed}} <div class="status-error"></div>{{else}}
                         <div class="status-success"></div>{{/if}}
                         {{#with request}} <span class="method">{{method}}</span> {{/with}} - {{item.name}}
