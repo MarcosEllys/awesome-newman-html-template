@@ -7,15 +7,21 @@ The template is a modification from the original reporter file from https://gith
 ## Libraries present
 - [Bootstrap](http://getbootstrap.com/)
 - [Clipboard JS](https://clipboardjs.com/)
+- [Chartist JS](https://gionkunz.github.io/chartist-js/)
 
 ## Prints
-* Initial Screen
+* Report Tab
 <p align="center">
-  <img alt="Initial Screen" src="https://raw.githubusercontent.com/MarcosEllys/newman-html-report-template-verbose/master/prints/one.png">
+  <img alt="Initial Screen" src="https://raw.githubusercontent.com/MarcosEllys/awesome-newman-html-template/master/prints/one.png">
 </p>
+* Request Tab
+<p align="center">
+  <img alt="Request opened" src="https://raw.githubusercontent.com/MarcosEllys/awesome-newman-html-template/master/prints/two.png">
+</p>
+
 * Request opened
 <p align="center">
-  <img alt="Request opened" src="https://raw.githubusercontent.com/MarcosEllys/newman-html-report-template-verbose/master/prints/two.png">
+  <img alt="Requ2est opened" src="https://raw.githubusercontent.com/MarcosEllys/awesome-newman-html-template/master/prints/three.png">
 </p>
 
 ## How to use
