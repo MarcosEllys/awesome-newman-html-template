@@ -4,10 +4,13 @@ a newman html report template which contains request and response details (body 
 
 The template is a modification from the original reporter file from https://github.com/postmanlabs/newman/blob/develop/lib/reporters/html/template-default.hbs
 
-## Libraries present
-- [Bootstrap](http://getbootstrap.com/)
-- [Clipboard JS](https://clipboardjs.com/)
-- [Fuse JS](http://fusejs.io/)
+## Advantages:
+
+- Built with the world's most popular front-end component library.
+- Powerful Report section.
+- Amazing Requests section.
+- Powerful Fuzzy search library.
+- With a modern library to copy text to clipboard.
 
 ## Prints
 * Report Tab
@@ -23,6 +26,11 @@ The template is a modification from the original reporter file from https://gith
 <p align="center">
   <img alt="Requ2est opened" src="https://raw.githubusercontent.com/MarcosEllys/awesome-newman-html-template/master/prints/three.png">
 </p>
+
+## Libraries present
+- [Bootstrap](http://getbootstrap.com/)
+- [Clipboard JS](https://clipboardjs.com/)
+- [Fuse JS](http://fusejs.io/)
 
 ## How to use
 * install newman
