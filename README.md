@@ -7,7 +7,7 @@ The template is a modification from the original reporter file from https://gith
 ## Libraries present
 - [Bootstrap](http://getbootstrap.com/)
 - [Clipboard JS](https://clipboardjs.com/)
-- [Chartist JS](https://gionkunz.github.io/chartist-js/)
+- [Fuse JS](http://fusejs.io/)
 
 ## Prints
 * Report Tab
