@@ -468,15 +468,14 @@
               {{#each aggregations}} {{#if parent.name}}
                 <div class="row">
                   <div class="card">
-                    <div class="card-header">
+                    <div class="card-header clearfix">
                       <div class="panel-group" id="collapse-folder-{{parent.id}}" role="tablist" aria-multiselectable="true">
                         <div role="tab" id="folderHead-{{parent.id}}">
                           <a role="button" data-toggle="collapse" role="button" data-parent="#accordion" href="#folderData-{{parent.id}}"
                             aria-controls="collapseOne" aria-expanded="true">
                             <strong>{{parent.name}}</strong>                                        
                             <strong class="pull-right">
-                              {{!-- {{executions.length}} --}}
-                              <span class="badge badge-info" style="font-size: 80%;">Requests 4</span>
+                              <span class="badge badge-info" style="font-size: 80%;">{{executions.length}} Requests</span>
                             </strong>                          
                           </a>
                         </div>
@@ -524,6 +523,7 @@
                   </div>
                   <div id="requestData-{{item.id}}" class="card-body panel-collapse collapse" role="tabpanel" aria-labelledby="requestHead-{{item.id}}">
                     <div class="panel-body">
+
                       <br> {{#with request}} {{#if description.content}}
                       <div class="row">
                         <div class="col-md-12">
@@ -564,7 +564,7 @@
                             <div class="card-header">
                               <h5>Body Response</h5>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body">                              
                               {{#if response.body}}
                               <div class="input-group mb-3">
                                 <input type="text" id="bd-response-{{item.id}}" class="form-control" readonly aria-label="Response" aria-describedby="Body Response Valuse"
@@ -637,7 +637,7 @@
     </div>
     
     <script type="text/javascript">
-      !function(){var e=new ClipboardJS(".btn"),t=0,s=0,n=0,o=[],a=document.location.toString(),i=[];$.each($(".panel-group-header"),function(){i.push({id:$(this).attr("id"),name:$(this).find(".badge-response-code").text(),method:$(this).find(".badge-response-time").text(),testStatus:$(this).find(".badge-response-size").text(),responseCode:$(this).find(".badge-test-status").text(),responseTime:$(this).find(".method").text(),responseSize:$(this).find(".test-name").text()})});var r,c,h,d,l=new Fuse(i,{shouldSort:!0,threshold:.2,location:0,distance:100,maxPatternLength:32,minMatchCharLength:1,keys:["name","method","testStatus","responseCode","responseTime","responseSize"]});function u(e){$("#search-requests").val(e);var t=l.search(e);if(t.length){$.each($(".panel-group-header"),function(){$(this).hide()});for(var s=0;s<t.length;s++)$("#"+t[s].id).show()}else $.each($(".panel-group-header"),function(){$(this).show()})}function p(e){$("#alert-type").removeClass(),$("#alert-type").addClass("alert alert-"+e.type),$("#alert-title").text(e.title),$("#alert-body").text(e.body),$("#alert-type").fadeTo(2e3,800).slideUp(800,function(){$("#alert-type").slideUp(800)})}a.match("#")&&$('.nav-tabs a[href="#'+a.split("#")[1]+'"]').tab("show"),$(".nav-tabs a").on("shown.bs.tab",function(e){window.location.hash=e.target.hash,"#activity"==e.target.hash&&$(".nano").nanoScroller()}),e.on("success",function(e){p({type:"success ",title:"Success! ",body:"Body Response Copied."})}),e.on("error",function(e){p({type:"danger ",title:"Error! ",body:"Copying Body Response."})}),$.each($(".method"),function(){$(this).addClass("type-"+$(this).text().toLowerCase())}),$.each($(".badge-pill"),function(){$(this).hasClass("badge-success")&&t++,$(this).hasClass("badge-danger")&&s++,$(this).hasClass("badge-warning")&&n++}),$(".count-success").text(t),$(".count-erros").text(s),$(".count-no-tests").text(n),$.each($(".params"),function(){var e={};decodeURIComponent($(this).text()).replace(/[?&]+([^=&]+)=([^&]*)/gi,function(t,s,n){e[s]=n}),$(this).text(JSON.stringify(e,void 0,2))}),$("#show-all").click(function(){u("")}),$("#show-success").click(function(){u("Passed")}),$("#show-error").click(function(){u("Failed")}),$("#show-no-tests").click(function(){u("No test")}),$.each($(".badge-primary"),function(){o.push($(this).text())}),o.sort()[0],$("#bad-response-time").text(o[0]),$("#best-response-time").text(o[o[0].length-1]),$("#search-requests").keyup((r=function(){u(this.value)},c=400,function(){var e=this,t=arguments,s=h&&!d;clearTimeout(d),d=setTimeout(function(){d=null,h||r.apply(e,t)},c),s&&r.apply(e,t)}))}();
+      !function(){var e=new ClipboardJS(".btn"),t=0,s=0,n=0,o=[],a=document.location.toString(),i=[];$.each($(".panel-group-header"),function(){i.push({id:$(this).attr("id"),name:$(this).find(".badge-response-code").text(),method:$(this).find(".badge-response-time").text(),testStatus:$(this).find(".badge-response-size").text(),responseCode:$(this).find(".badge-test-status").text(),responseTime:$(this).find(".method").text(),responseSize:$(this).find(".test-name").text()})});var r,h,c=new Fuse(i,{shouldSort:!0,threshold:.2,location:0,distance:100,maxPatternLength:32,minMatchCharLength:1,keys:["name","method","testStatus","responseCode","responseTime","responseSize"]});function d(e){$("#search-requests").val(e);var t=c.search(e);if(t.length||!t.length&&e.length){$.each($(".panel-group-header"),function(){$(this).hide()});for(var s=0;s<t.length;s++)$("#"+t[s].id).show()}else $.each($(".panel-group-header"),function(){$(this).show()})}function l(e){$("#alert-type").removeClass(),$("#alert-type").addClass("alert alert-"+e.type),$("#alert-title").text(e.title),$("#alert-body").text(e.body),$("#alert-type").fadeTo(2e3,800).slideUp(800,function(){$("#alert-type").slideUp(800)})}a.match("#")&&$('.nav-tabs a[href="#'+a.split("#")[1]+'"]').tab("show"),$(".nav-tabs a").on("shown.bs.tab",function(e){window.location.hash=e.target.hash,"#activity"==e.target.hash&&$(".nano").nanoScroller()}),e.on("success",function(e){l({type:"success ",title:"Success! ",body:"Body Response Copied."})}),e.on("error",function(e){l({type:"danger ",title:"Error! ",body:"Copying Body Response."})}),$.each($(".method"),function(){$(this).addClass("type-"+$(this).text().toLowerCase())}),$.each($(".badge-pill"),function(){$(this).hasClass("badge-success")&&t++,$(this).hasClass("badge-danger")&&s++,$(this).hasClass("badge-warning")&&n++}),$(".count-success").text(t),$(".count-erros").text(s),$(".count-no-tests").text(n),$.each($(".params"),function(){var e={};decodeURIComponent($(this).text()).replace(/[?&]+([^=&]+)=([^&]*)/gi,function(t,s,n){e[s]=n}),$(this).text(JSON.stringify(e,void 0,2))}),$("#show-all").click(function(){d("")}),$("#show-success").click(function(){d("Passed")}),$("#show-error").click(function(){d("Failed")}),$("#show-no-tests").click(function(){d("No test")}),$.each($(".badge-primary"),function(){o.push($(this).text())}),o.sort()[0],$("#bad-response-time").text(o[0]),$("#best-response-time").text(o[o[0].length-1]),$("#search-requests").keyup((r=function(){d(this.value)},400,function(){var e=this,t=arguments;clearTimeout(h),h=setTimeout(function(){h=null,r.apply(e,t)},400)}))}();
     </script>
   </body>
 </html>
