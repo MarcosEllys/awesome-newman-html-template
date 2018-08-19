@@ -524,10 +524,10 @@
                   <div id="requestData-{{item.id}}" class="card-body panel-collapse collapse" role="tabpanel" aria-labelledby="requestHead-{{item.id}}">
                     <div class="panel-body">
 
-                      <br> {{#with request}} {{#if description.content}}
+                      {{#with request}} {{#if description.content}}
                       <div class="row">
                         <div class="col-md-12">
-                          <div class="card">
+                          <div class="card" style="margin: 0">
                             <div class="card-header">
                               <h5>Description</h5>
                             </div>
@@ -537,6 +537,7 @@
                           </div>
                         </div>
                       </div>
+                      <br>
                       {{/if}}
                       <div class="col-md-12 text-center">
                         <h5>URL:
@@ -596,31 +597,35 @@
                       </div>
                       <div class="row">
                         <div class="card">
-                          <table class="table table-hover">
-                            <thead class="text-center" style="background-color: #36a9f5; color: #ffffff">
-                              <tr>
-                                <th style="border-left: 10px solid #36a9f5;">
-                                  {{#if cumulativeTests.passed }} {{else}} {{#if cumulativeTests.failed }} {{else}} There are no tests {{/if}} {{/if}}
-                                  {{#if assertions.length}} 
-                                  <h4>Tests</h4>
+                          <div class="table-responsive">
+                            <table class="table table-hover">
+                              <thead class="text-center" style="background-color: #36a9f5; color: #ffffff">
+                                <tr>
+                                  <th colspan="3"style="border-left: 10px solid #36a9f5;">
+                                    {{#if cumulativeTests.passed }} {{else}} {{#if cumulativeTests.failed }} {{else}} There are no tests {{/if}} {{/if}}
+                                    {{#if assertions.length}} 
+                                    <h4>Tests</h4>
+                                    {{/if}}
+                                  </th>
+                                </tr>
+                              </thead>
+                              {{#if assertions.length}}
+                              <tbody>
+                                {{#each assertions}}
+                                <tr>
+                                  {{#if this.passed}}
+                                  <td style="border-left: 10px solid #28a745;">{{this.name}}</td>
+                                  {{/if}} {{#if this.failed}}
+                                  <td style="border-left: 10px solid #dc3545;">{{this.name}}</td>
                                   {{/if}}
-                                </th>
-                              </tr>
-                            </thead>
-                            {{#if assertions.length}}
-                            <tbody>
-                              {{#each assertions}}
-                              <tr>
-                                {{#if this.passed}}
-                                <td style="border-left: 10px solid #28a745;">{{this.name}}</td>
-                                {{/if}} {{#if this.failed}}
-                                <td style="border-left: 10px solid #dc3545;">{{this.name}}</td>
-                                {{/if}}
-                                {{/each}}
-                              </tr>
-                            </tbody>
-                            {{/if}}
-                          </table>
+                                  <td><h5><span class="badge badge-success" title="Pass count">{{this.passed}} Passed</span></h5></td>
+                                  <td><h5><span class="badge badge-danger" title="Fail count">{{this.failed}} Failed</span></h5></td>
+                                  {{/each}}
+                                </tr>
+                              </tbody>
+                              {{/if}}
+                            </table>
+                          </div>
                         </div>
                       </div>
                     </div>
