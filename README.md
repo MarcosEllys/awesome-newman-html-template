@@ -53,3 +53,6 @@ The template is a modification from the [original reporter file](https://github.
 ```
 newman run -e my.environment.json -g my.globals.json --reporters cli,html --reporter-html-template templates/htmlreqres.hbs --reporter-html-export my_report.html my.collection.postman.json
 ```
+## Contributing
+
+Please review the [Contribution to Awesome guide](https://github.com/MarcosEllys/awesome-newman-html-template/blob/master/CONTRIBUTING.md) for information on how to get started contributing to the project.
