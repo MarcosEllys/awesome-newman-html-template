@@ -5,7 +5,7 @@ a newman html report template which contains request and response details (body 
 
 The template is a modification from the [original reporter file](https://github.com/postmanlabs/newman-reporter-html/blob/develop/lib/template-default.hbs)
 
-## Demo: 
+## Demo:
 
 [Awesome Newman Html Template](https://marcosellys.github.io/awesome-newman-html-template/)
 
@@ -20,26 +20,6 @@ The template is a modification from the [original reporter file](https://github.
 - Amazing Requests section.
 - Powerful Fuzzy search library.
 - With a modern library to copy text to clipboard.
-
-## Prints
-
-### Report Tab
-
-<p align="center">
-  <img alt="Initial Screen" src="https://raw.githubusercontent.com/MarcosEllys/awesome-newman-html-template/master/prints/one.png">
-</p>
-
-### Request Tab
-
-<p align="center">
-  <img alt="Request opened" src="https://raw.githubusercontent.com/MarcosEllys/awesome-newman-html-template/master/prints/two.png">
-</p>
-
-### Failures Tab
-
-<p align="center">
-  <img alt="Requ2est opened" src="https://raw.githubusercontent.com/MarcosEllys/awesome-newman-html-template/master/prints/three.png">
-</p>
 
 ## Libraries present
 - [Bootstrap](http://getbootstrap.com/)
