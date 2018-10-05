@@ -25,6 +25,7 @@ The template is a modification from the [original reporter file](https://github.
 - [Bootstrap](http://getbootstrap.com/)
 - [Clipboard JS](https://clipboardjs.com/)
 - [Fuse JS](http://fusejs.io/)
+- [Highlight JS](https://highlightjs.org/)
 
 ## How to use
 * [Install Newman](https://github.com/postmanlabs/newman-reporter-html)
