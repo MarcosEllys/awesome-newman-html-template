@@ -28,7 +28,7 @@ The template is a modification from the [original reporter file](https://github.
 - [Highlight JS](https://highlightjs.org/)
 
 ## How to use
-* [Install Newman](https://github.com/postmanlabs/newman-reporter-html)
+* [Install Newman](https://github.com/postmanlabs/newman)
 * [Install Report HTML](https://github.com/postmanlabs/newman-reporter-html)
 * Call newman as follows:
 ```
