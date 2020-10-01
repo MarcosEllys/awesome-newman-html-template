@@ -3,7 +3,7 @@
 a newman html report template which contains request and response details (body plus http headers) in the report.
 (similar what you could get with the newman v2 -O out option)
 
-The template is a modification from the [original reporter file](https://github.com/postmanlabs/newman-reporter-html/blob/develop/lib/template-default.hbs)
+The template is a great modification from the [original reporter file](https://github.com/postmanlabs/newman-reporter-html/blob/develop/lib/template-default.hbs)
 
 ## Demo:
 
